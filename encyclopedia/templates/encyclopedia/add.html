@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %} 
+    <h1>Create New Page</h1>
+    <h6>If no form is rendered, click submit</h6>
+    <br>
+    {% if existing %}
+        <h2 style="color:red">The entry already existed</h2>
+    {% endif %}
+    <div>
+        <form action="{% url 'create' %}" method="post">
+            {% csrf_token %}
+            {{ title_form.as_p }}
+            {{ content_form.as_p }}
+            <!-- <input class="search" type="text" name="q" placeholder="Search Encyclopedia"> -->
+            <input type = submit>
+        </form>
+    </div>>
+
+{% endblock %}
+
+
